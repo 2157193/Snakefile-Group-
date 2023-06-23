@@ -1,5 +1,3 @@
-# Snakefile-Group-
-Snakefile Group  2023
 # Snakefile
 
 # Define input samples
@@ -109,6 +107,14 @@ rule index_bam:
         """
         samtools index {input.sorted_bam}
         """
+# Define rule for samtools_flagstat
+rule samtools_flagstat:
+    input:
+        "path/to/input.bam"
+    output:
+        "path/to/output.flagstat"
+    shell:
+        "samtools flagstat {input} > {output}"
 
 # Define rule for counting reads with featureCounts
 rule featurecounts:
